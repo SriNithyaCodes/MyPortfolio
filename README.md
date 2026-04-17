@@ -33,6 +33,7 @@ This portfolio is designed with a modern, glassmorphism aesthetic, featuring dyn
 
 1. **My Landing Page**: A beautifully designed landing page demonstrating foundational web layout and styling skills.
 2. **Interactive Calculator**: A highly responsive calculator web application offering core arithmetic operations.
+3. **Linguist - AI Translator**: A next-generation translation app featuring real-time AI-powered voice, image, and text translation. (Live at: [translatorlanguageapp.vercel.app](https://translatorlanguageapp.vercel.app/))
 
 ## 💻 Local Development
 

@@ -4,6 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- OGL for LightRays WebGL effect -->
+  <script type="module">
+    import { Renderer, Program, Triangle, Mesh } from 'https://cdn.jsdelivr.net/npm/ogl@1.0.11/+esm';
+    window.OGL = { Renderer, Program, Triangle, Mesh };
+  </script>
   <title>Sri Nithya | Portfolio</title>
 
   <!-- Fonts: Outfit and Inter for modern sleek look -->
@@ -22,28 +29,28 @@
 
 <body>
 
-
-
   <!-- Glow Backgrounds Layer -->
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
 
   <!-- Navigation -->
-  <nav class="navbar glass hidden">
-    <div class="nav-logo">
-      <span class="logo-accent">&lt;</span>SRI<span class="logo-accent">/&gt;</span>
+  <nav class="navbar hidden">
+    <div class="nav-logo-circle">
+      <span>SRI</span>
     </div>
     <div class="nav-links">
       <a href="#about">About</a>
-      <a href="#education">Journey</a>
+      <a href="#education">Education</a>
       <a href="#skills">Skills</a>
-      <a href="#projects">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="Sri's Resume.pdf" target="_blank">Resume</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <header class="hero" id="home">
+    <div id="hero-light-rays" class="light-rays-container"></div>
     <div class="hero-content">
       <p class="hero-greeting hidden">Hi, my name is</p>
       <h1 class="hero-name glow-text hidden">Kasam Sri Nithya Reddy.</h1>
@@ -97,9 +104,8 @@
         </div>
       </div>
       <div class="about-image-wrapper hidden">
-        <div class="about-image">
-          <img src="My profile image.jpg" alt="Sri Nithya"
-            onerror="this.src='https://via.placeholder.com/300/4f46e5/ffffff?text=Sri+Nithya'">
+        <div id="about-chroma" class="chroma-container-single">
+          <!-- Chroma card will be injected here via JS for consistency -->
         </div>
       </div>
     </div>
@@ -135,34 +141,11 @@
   <!-- Skills Section -->
   <section class="section" id="skills">
     <h2 class="section-title hidden"><span class="title-index">03.</span> Core Skills</h2>
-    <div class="skills-wrapper">
-      <div class="skills-visual hidden">
-        <div class="image-premium-wrapper">
-          <img src="my-image.jpg.gif" alt="Coding Illustration" class="premium-image">
-        </div>
-        <div class="skill-blob"></div>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-card glass card-hover hidden">
-          <i class="fab fa-html5 skill-icon" style="color: #e34c26;"></i>
-          <h3>HTML</h3>
-        </div>
-        <div class="skill-card glass card-hover hidden">
-          <i class="fab fa-css3-alt skill-icon" style="color: #264de4;"></i>
-          <h3>CSS</h3>
-        </div>
-        <div class="skill-card glass card-hover hidden">
-          <i class="fab fa-python skill-icon" style="color: #fce32a;"></i>
-          <h3>Python</h3>
-        </div>
-        <div class="skill-card glass card-hover hidden">
-          <i class="fab fa-git-alt skill-icon" style="color: #f34f29;"></i>
-          <h3>Git</h3>
-        </div>
-        <div class="skill-card glass card-hover hidden">
-          <i class="fab fa-github skill-icon" style="color: #ffffff;"></i>
-          <h3>GitHub</h3>
-        </div>
+    
+    <!-- Unified Scrolling Skills -->
+    <div class="skills-loop-hero hidden">
+      <div id="tech-loop" class="logoloop logoloop--fade logoloop--scale-hover">
+        <!-- Managed by script.js -->
       </div>
     </div>
   </section>
@@ -170,96 +153,99 @@
   <!-- Projects Section -->
   <section class="section" id="projects">
     <h2 class="section-title hidden"><span class="title-index">04.</span> Featured Projects</h2>
-    <div class="projects-grid">
-      <!-- Project 1 -->
-      <div class="project-card glass group hidden">
-        <div class="project-image">
-          <img src="myfood.jpg" alt="Landing Page"
-            onerror="this.src='https://via.placeholder.com/600x350/111827/ffffff?text=Landing+Page'">
-          <div class="project-overlay">
-            <a href="https://github.com/SriNithyaCodes/LandingPage" target="_blank" class="overlay-link"><i
-                class="fas fa-external-link-alt"></i></a>
-          </div>
-        </div>
-        <div class="project-info">
-          <span class="project-label">Showcase</span>
-          <h3>My Landing Page</h3>
-          <p>A beautifully designed Landing Page website demonstrating core web development skills to showcase projects
-            and personal brand.</p>
-          <div class="project-tech">
-            <span>HTML</span>
-            <span>CSS</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="project-card glass group hidden">
-        <div class="project-image">
-          <img src="Calculator.jpg" alt="Calculator App"
-            onerror="this.src='https://via.placeholder.com/600x350/111827/ffffff?text=Calculator+App'">
-          <div class="project-overlay">
-            <a href="https://niniyya.github.io/Calculator/" target="_blank" class="overlay-link"><i
-                class="fas fa-external-link-alt"></i></a>
-          </div>
-        </div>
-        <div class="project-info">
-          <span class="project-label">Web App</span>
-          <h3>Interactive Calculator</h3>
-          <p>A simple and highly responsive calculator web application offering foundational arithmetic operations in a
-            clean user interface.</p>
-          <div class="project-tech">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-          </div>
-        </div>
-      </div>
+    <div id="chroma-projects" class="chroma-container hidden">
+      <!-- High-End interactive project cards injected here via JS -->
     </div>
   </section>
 
   <!-- Contact Section -->
   <section class="section" id="contact">
-    <div class="contact-card glass card-hover hidden">
-      <h2 class="contact-title">Get In Touch</h2>
-      <p class="contact-desc">
-        Whether you have a question, want to discuss a project, or just want to say hi, my inbox is always open. Let's
-        build something extraordinary.
-      </p>
+    <div class="contact-card glass hidden">
+      <div class="contact-content-grid">
+        
+        <!-- Left Side: Interactive Visual -->
+        <div class="contact-left">
+          <!-- Interactive Creative Element -->
+          <div class="creative-visual-container">
+            <div class="eyes-container">
+              <div class="eye">
+                <div class="iris"></div>
+                <div class="pupil"></div>
+                <div class="shine"></div>
+              </div>
+              <div class="eye">
+                <div class="iris"></div>
+                <div class="pupil"></div>
+                <div class="shine"></div>
+              </div>
+            </div>
+            <div class="visual-glow"></div>
+          </div>
+          
+          <div class="contact-quote">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p>Design is not just what it looks like and feels like. Design is <span>how it works.</span></p>
+          </div>
+          
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+              <a href="mailto:srinithyareddykasam@gmail.com">srinithyareddykasam@gmail.com</a>
+            </div>
+            <div class="contact-detail-item">
+              <div class="icon-circle"><i class="fab fa-linkedin-in"></i></div>
+              <a href="https://www.linkedin.com/in/sri-nithya-reddy-kasam-24299b367/" target="_blank">linkedin.com/in/kasam-sri-nithya</a>
+            </div>
+            <div class="contact-detail-item">
+              <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+              <span>Hyderabad, Telangana</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="contact-info-list">
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Hyderabad, Telangana</span>
+        <!-- Right Side: Interaction Form -->
+        <div class="contact-right">
+          <form class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" id="name" placeholder="Full Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" id="email" placeholder="Email Address" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn send-btn">
+              Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
+            </button>
+          </form>
         </div>
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <a href="mailto:srinithyareddykasam@gmail.com">srinithyareddykasam@gmail.com</a>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-phone-alt"></i>
-          <a href="tel:7337092412">7337092412</a>
-        </div>
+
       </div>
-
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/sri-nithya-reddy-kasam-24299b367/" target="_blank" class="social-icon">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="mailto:srinithyareddykasam@gmail.com" class="social-icon">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
-
-      <a href="mailto:srinithyareddykasam@gmail.com" class="btn primary-btn mt-4">Say Hello</a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="hidden">
-    <div class="footer-container">
-      <p>&copy; 2025 K. Sri Nithya. Built with ❤️.</p>
-
+  <footer class="footer hidden">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-logo">SRI.</span>
+      </div>
+      <div class="footer-center">
+        <p>&copy; 2025 K. Sri Nithya. Built with ❤️ and <i class="fab fa-react react-icon"></i>.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-socials">
+          <a href="https://github.com/SriNithyaCodes" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/sri-nithya-reddy-kasam-24299b367/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:srinithyareddykasam@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <a href="#home" class="floating-sparkle" aria-label="Back to Top">
+          <i class="fas fa-wand-magic-sparkles"></i>
+        </a>
+      </div>
     </div>
   </footer>
 
